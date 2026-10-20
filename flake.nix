@@ -30,5 +30,12 @@
     {
       # Set formatter for Nix
       formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-tree);
+
+      # Provide packages
+      packages = forEachSupportedSystem (
+        { pkgs, system }: rec {
+          pltable = pkgs.python3Packages.callPackage ./nix/pkgs/pltable.nix { };
+        }
+      );
     };
 }
