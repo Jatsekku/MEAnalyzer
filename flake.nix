@@ -35,6 +35,7 @@
       packages = forEachSupportedSystem (
         { pkgs, system }: rec {
           pltable = pkgs.python3Packages.callPackage ./nix/pkgs/pltable.nix { };
+          meanalyzer = pkgs.python3Packages.callPackage ./nix/pkgs/meanalyzer.nix { inherit pltable; };
         }
       );
     };
